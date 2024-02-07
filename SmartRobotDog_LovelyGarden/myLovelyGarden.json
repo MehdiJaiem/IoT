@@ -1,0 +1,158 @@
+{
+    "@context": "https://www.w3.org/2019/wot/td/v1",
+    "title": "automatedGardenThing",
+    "description": "Lovely Garden Thing",
+    "securityDefinitions": {
+      "nosec_sc": {
+        "scheme": "nosec"
+      }
+    },
+    "security": "nosec_sc",
+    "base": "http://localhost:8080/automatedGardenThing/",
+    "properties": {
+        "temperature": {
+            "type": "number",
+            "unit": "Degree Celsius",
+            "title": "Temperature",
+            "description": " A temperature value between -20 and 60 Celcius that follows a periodic curve with a period of 1 day",
+            "minumum": -20,
+            "maximum": 60,
+            "readOnly": true,
+            "observable": false,
+            "forms": [
+                {
+                    "op": "readproperty",
+                    "href": ".../properties/temperature",
+                    "contentType": "application/json",
+                    "htv:methodName": "GET"
+                }
+            ]
+
+        },
+        "soilHumidity": {
+            "type": "number",
+            "unit": "percentage",
+            "title": "Soil Humidity",
+            "description": "Humidity value with a unit of percentage between 0 and 100",
+            "minimum": 0,
+            "maximum": 100,
+            "readOnly": true,
+            "observable": true,
+            "forms": [
+              {
+                "op": "readproperty",
+                "href": ".../properties/soilHumidity",
+                "contentType": "application/json",
+                "htv:methodName": "GET"
+              },
+              {
+                "op": "observeproperty",
+                "href": ".../properties/soilHumidity",
+                "contentType": "application/json",
+                "htv:methodName": "GET"
+              }
+            ]
+          },
+          "humidityThreshold": {
+            "type": "number",
+            "unit": "percentage",
+            "title": "Humidity threshold",
+            "description": "Threshold value with a unit of percentage between 0 and 100 after which watering procedure starts automatically",
+            "minimum": 0,
+            "maximum": 100,
+            "readOnly": false,
+            "forms": [
+                {
+                    "op": "writeproperty",
+                    "href": ".../properties/humidityThreshold",
+                    "contentType": "application/json",
+                    "htv:methodName": "PUT"
+                  },
+                
+              {
+                "op": "readproperty",
+                "href": ".../properties/humidityThreshold",
+                "contentType": "application/json",
+                "htv:methodName": "GET"
+              }
+            ]
+          },
+          "state": {
+            "enum": ["automaticWatering","manualWatering"],
+            "title": "Watering action property status",
+            "description": "Determines the mode of action of the watering method. This depends on the will of relying on the predition algorithm or not and by that also rely on the humidity seonsor value or not",
+            "forms": [
+              {
+                "op": "writeproperty",
+                "href": ".../properties/state",
+                "contentType": "application/json",
+                "htv:methodName": "PUT"
+              },
+              {
+                "op": "readproperty",
+                "href": ".../properties/state",
+                "contentType": "application/json",
+                "htv:methodName": "GET"
+              }
+            ]
+          }
+    },
+    "actions": {
+        "startSprinkler": {
+            "idempotent": true,
+            "safe": false,
+            "forms": [
+            {
+              "op": "invokeaction",
+              "contentType": "application/json",
+              "href": ".../actions/startSprinkler",
+              "htv:methodName": "POST"
+            }
+          ]
+        },
+        "stopSprinkler": {
+            "idempotent": true,
+            "safe": false,
+            "forms": [
+            {
+              "op": "invokeaction",
+              "contentType": "application/json",
+              "href": ".../actions/stopSprinkler",
+              "htv:methodName": "POST"
+            }
+          ]
+        }
+      },
+      "events": {
+        "tooDry": {
+          "description": "It does not have any payload and it is fired when the humidity reaches the set humidityThreshold",
+          "forms": [
+            {
+              "op": "subscribeevent",
+              "href": ".../events/tooDry",
+              "contentType": "application/json"
+            }
+          ]
+        },
+        "tooWet": {
+          "description": "It does not have any payload and it is fired when the humidity reaches 90 percent.",
+          "forms": [
+            {
+              "op": "subscribeevent",
+              "href": ".../events/tooWet",
+              "contentType": "application/json"
+            }
+          ]
+        }
+      },
+      "forms":
+       [
+        {
+          "op": "readallproperties",
+          "href": "properties/all",
+          "contentType": "application/json",
+          "htv:methodName": "GET"
+        }
+        ]
+}
+    

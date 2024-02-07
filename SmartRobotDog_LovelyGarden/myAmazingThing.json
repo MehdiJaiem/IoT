@@ -1,0 +1,235 @@
+{
+    "@context": "https://www.w3.org/2019/wot/td/v1",
+    "description": "A home assisting robot",
+    "title": "myAmazingThing",
+    "securityDefinitions": {
+      "nosec_sc": {
+        "scheme": "nosec"
+      }
+    },
+    "security": "nosec_sc",
+    "base": "http://localhost:8080/myamazingthingproject/",
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "name",
+        "description": "Name your robot",
+        "observable": false,
+        "readonly": false,
+        "forms": [
+          {
+            "op": "readproperty",
+            "href": ".../properties/name",
+            "contentType": "application/json",
+            "htv:methodName": "GET"
+          },
+          {
+            "op": "writeproperty",
+            "href": ".../properties/name",
+            "contentType": "application/json",
+            "htv:methodName": "PUT"
+          }
+        ]
+      },
+
+      "status": {
+        "enum": [
+          "joyfull",
+          "sad",
+          "unsatisfied",
+          "worried",
+          "interested",
+          "neutral",
+          "pleased"
+        ],
+        "title": "status",
+        "description": "dispose the facial expression through a led display. LEDs form the facial expression",
+        "readOnly": true,
+        "forms": [
+          {
+            "op": "readproperty",
+            "href": ".../properties/status",
+            "contentType": "application/json",
+            "htv:methodName": "GET"
+          }
+        ]
+      }
+    },
+    "actions": {
+      "highFive": {
+        "title": "highFive",
+        "description": "sign of appreciation or nailing a situation displayed through a led screen",
+        "input": {},
+        "output": {
+          "enum": [
+            "H.A.P.P.Y",
+            "S.U.P.E.R.H.A.P.P.Y",
+            "M.E.H"
+          ]
+        },
+        "safe": true,
+        "idempotent": true,
+        "forms": [
+          {
+            "op": "invokeaction",
+            "href": ".../actions/highFive",
+            "contentType": "application/json",
+            "htv:methodName": "POST"
+          }
+        ]
+      },
+      "charge": {
+        "title": "charge",
+        "description": "charge the robot",
+        "input": {
+          "enum": [
+            "cablecharging",
+            "wirecharging",
+            "do nothing"
+          ]
+        },
+        "output": {
+          "enum": [
+            "H.A.P.P.Y",
+            "S.U.P.E.R.H.A.P.P.Y",
+            "M.E.H"
+          ]
+        },
+        "safe": true,
+        "idempotent": true,
+        "forms": [
+          {
+            "op": "invokeaction",
+            "href": ".../actions/feed",
+            "contentType": "application/json",
+            "htv:methodName": "POST"
+          }
+        ]
+      },
+      "bringMeFood": {
+        "title": "Food On the way",
+        "description": "Order the robot to bring you food",
+        "input": {},
+        "output": {},
+        "safe": true,
+        "idempotent": true,
+        "forms": [
+          {
+            "op": "invokeaction",
+            "href": ".../actions/giveWater",
+            "contentType": "application/json",
+            "htv:methodName": "POST"
+          }
+        ]
+      },
+      "game": {
+        "title": "gaming mode",
+        "description": "small game interaction with the robot",
+        "input": {
+          "enum": [
+            "chess",
+            "ball",
+            "dance"
+          ]
+        },
+        "output": {
+          "enum": [
+            "GOTCHA",
+            "CHEATER",
+            "LALALAND VIBE"
+          ]
+        },
+        "safe": true,
+        "idempotent": true,
+        "forms": [
+          {
+            "op": "invokeaction",
+            "href": ".../actions/play",
+            "contentType": "application/json",
+            "htv:methodName": "POST"
+          }
+        ]
+      },
+      "maintainance": {
+        "title": "maintainance",
+        "description": "If you notice something uncommon, the robot would need to be taken care of",
+        "input": {},
+        "output": {
+          "enum": [
+            "led screeen blurry",
+            "unusual walking way",
+            "robot voice unclear"
+          ]
+        },
+        "safe": true,
+        "idempotent": true,
+        "forms": [
+          {
+            "op": "invokeaction",
+            "href": "actions/potty",
+            "contentType": "application/json",
+            "htv:methodName": "POST"
+          }
+        ]
+      }
+    },
+    "events": {
+      "battery": {
+        "title": "battery",
+        "description": "Charge of the robot needed",
+        "subscription": {},
+        "data": {
+          "type": "string"
+        },
+        "cancellation": {},
+        "forms": [
+          {
+            "op": "subscribeevent",
+            "href": ".../events/battery",
+            "contentType": "application/json"
+          }
+        ]
+      },
+      "serve": {
+        "title": "serve",
+        "description": "When user is hungry and needs food",
+        "subscription": {},
+        "data": {
+          "type": "string"
+        },
+        "cancellation": {},
+        "forms": [
+          {
+            "op": "subscribeevent",
+            "href": ".../events/serve",
+            "contentType": "application/json"
+          }
+        ]
+      },
+      "broken": {
+        "title": "broken robot",
+        "description": "Robot status and maintainance",
+        "subscription": {},
+        "data": {
+          "type": "string"
+        },
+        "cancellation": {},
+        "forms": [
+          {
+            "op": "subscribeevent",
+            "href": ".../events/broken",
+            "contentType": "application/json",
+            "subprotocol": "longpoll"
+          }
+        ]
+      }
+    },
+    "forms": [
+      {
+        "op": "readallproperties",
+        "href": "properties/all",
+        "contentType": "application/json",
+        "htv:methodName": "GET"
+      }
+    ]
+  }

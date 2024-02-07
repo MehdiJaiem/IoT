@@ -1,0 +1,167 @@
+[
+	{
+	"interactionCounter": 1,
+	"operation": "readproperty",
+	"affordance": {
+		"type": "property",
+		"name": "waterStatus"
+	},
+	"recipient": {
+		"type": "thing",
+		"thingId": "de:tum:ei:esi:fp:coffee:1-1",
+		"thingTitle": "VirtualCoffeeMachine"
+	},
+	"messageId": 1,
+	"timeStamp": "2021-02-04T03:04:16.01"
+}, {
+	"interactionCounter": 2,
+  	"operation": "readproperty",
+	"affordance": {
+		"type": "property",
+		"name": "waterStatus"
+	},
+	"recipient": {
+		"type": "controller"
+	},
+	"payload": 9,
+	"messageId": 1,
+	"timeStamp": "2021-02-04T03:04:16.02"
+}, {
+	"interactionCounter": 3,
+	"operation": "writeproperty",
+	"affordance": {
+		"type": "property",
+		"name": "string"
+	},
+	"recipient": {
+		"type": "thing",
+		"thingId": "urn:uuid:f8248a5d-2c9f-4480-acda-f6d30e96cbad",
+		"thingTitle": "TestThing"
+	},
+	"messageId": 2,
+	"payload":"testString",
+	"timeStamp": "2021-02-04T03:04:16.03"
+}, {
+	"interactionCounter": 4,
+	"operation": "subscribeevent",
+	"affordance": {
+		"type": "event",
+		"name": "maintenance"
+	},
+	"recipient": {
+		"type": "thing",
+		"thingId": "de:tum:ei:esi:fp:coffee:1-1",
+		"thingTitle": "VirtualCoffeeMachine"
+	},
+	"messageId": 3,
+	"timeStamp": "2021-02-04T03:04:16.04"
+}, {
+	"interactionCounter": 5,
+  	"operation": "subscribeevent",
+	"affordance": {
+		"type": "event",
+		"name": "maintenance"
+	},
+	"recipient": {
+		"type": "controller"
+	},
+	"messageId": 3,
+	"timeStamp": "2021-02-04T03:04:16.05"
+}, {
+	"interactionCounter": 6,
+	"operation": "writeproperty",
+	"affordance": {
+		"type": "property",
+		"name": "int"
+	},
+	"payload":5,
+	"recipient": {
+		"type": "thing",
+		"thingId": "urn:uuid:f8248a5d-2c9f-4480-acda-f6d30e96cbad",
+		"thingTitle": "TestThing"
+	},
+	"messageId": 4,
+	"timeStamp": "2021-02-04T03:04:16.06"
+}, {
+	"interactionCounter": 7,
+	"operation": "subscribeevent",
+	"affordance": {
+		"type": "event",
+		"name": "error"
+	},
+	"recipient": {
+		"type": "thing",
+		"thingId": "de:tum:ei:esi:fp:coffee:1-1",
+		"thingTitle": "VirtualCoffeeMachine"
+	},
+	"messageId": 5,
+	"timeStamp": "2021-02-04T03:04:16.07"
+}, {
+	"interactionCounter": 8,
+  	"operation": "subscribeevent",
+	"affordance": {
+		"type": "event",
+		"name": "error"
+	},
+	"recipient": {
+		"type": "controller"
+	},
+	"messageId": 5,
+	"timeStamp": "2021-02-04T03:04:16.08"
+}, {
+	"interactionCounter": 9,
+	"operation": "writeproperty",
+	"affordance": {
+		"type": "property",
+		"name": "bool"
+	},
+	"recipient": {
+		"type": "thing",
+		"thingId": "urn:uuid:f8248a5d-2c9f-4480-acda-f6d30e96cbad",
+		"thingTitle": "TestThing"
+	},
+	"messageId": 6,
+	"timeStamp": "2021-02-04T03:04:16.09"
+}, {
+	"interactionCounter": 10,
+	"operation": "readproperty",
+	"affordance": {
+		"type": "property",
+		"name": "coffeeStatus"
+	},
+	"recipient": {
+		"type": "thing",
+		"thingId": "de:tum:ei:esi:fp:coffee:1-1",
+		"thingTitle": "VirtualCoffeeMachine"
+	},
+	"messageId": 7,
+	"timeStamp": "2021-02-04T03:04:16.10"
+}, {
+	"interactionCounter": 11,
+  	"operation": "readproperty",
+	"affordance": {
+		"type": "property",
+		"name": "coffeeStatus"
+	},
+	"recipient": {
+		"type": "controller"
+	},
+	"payload": 8,
+	"messageId": 7,
+	"timeStamp": "2021-02-04T03:04:16.11"
+}, {
+	"interactionCounter": 12,
+	"operation": "writeproperty",
+	"affordance": {
+		"type": "property",
+		"name": "num"
+	},
+	"payload":14.5,
+	"recipient": {
+		"type": "thing",
+		"thingId": "urn:uuid:f8248a5d-2c9f-4480-acda-f6d30e96cbad",
+		"thingTitle": "TestThing"
+	},
+	"messageId": 8,
+	"timeStamp": "2021-02-04T03:04:16.12"
+}]
